@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="{% url 'haystack_search' %}" class="autocomplete">
+  <label for="q">Search</label>
+  <input id="q" name="q" type="text" autocomplete="off">
+  <input type="submit" value="Search!">
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static 'polls/js/autocomplete.js' %}"></script>
+
+<script type="text/javascript">
+  $(function () {
+    window.autocomplete = new Autocomplete({
+      form_selector: '.autocomplete',
+      url: '{% url 'polls:autocomplete' %}'
+    });
+    window.autocomplete.setup()
+  });
+</script>
+
+
+  </body>
+</html>
